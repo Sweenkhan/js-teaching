@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events in js </title>
+</head>
+<body>
+
+    <div style="margin-bottom: 20px;">
+         <button>click</button>
+    </div>
+
+    <form style="border: 1px solid grey; border-radius: 10px; padding: 10px;">
+        <input type="text" /><br>
+        <button class="submitForm" type="submit" style="margin-top: 10px;">submit</button>
+    </form>
+
+    
+    <script>
+
+        let color = ["red", "green", "blue", "black", "pink"];
+        
+        
+        let btn = document.querySelectorAll("button")[0]
+        let submit = document.querySelectorAll("button")[1]
+        let input =  document.querySelector("input")
+ 
+        btn.addEventListener("click", ()=>{  
+            let randomNum = Math.floor(Math.random() * 5);
+            document.body.style.backgroundColor = color[randomNum]
+        } )
+
+
+       submit.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        if(input.value === ""){
+            alert("please fill this input")
+              submit.type = false
+        } else {
+            console.log("thanks for your time.")
+            input.value = ""
+        }
+
+        
+       } )
+        
+
+    </script>
+</body>
+</html>

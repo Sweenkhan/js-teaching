@@ -53,5 +53,16 @@ let profile = {
     }
 }
 
+let n = 10.4
+let val = 10
 
- 
+// console.log(Math.floor(n))   //10    it gives you value on the lower side
+// console.log(Math.ceil(n))    //11    it gives you value on the higher side
+// console.log(Math.round(n))      //10     round of your value
+// console.log(val.toFixed(2))     //10.00  it gives you value with 0,
+
+
+
+let random =  Math.floor(Math.random() * 100);
+
+console.log(Math.floor(Math.random() * 100))

@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document object model</title>
+</head>
+<body>
+
+<div class="first" style="background-color: grey; border: 1px solid black; border-radius: 10px; padding: 10px;">
+    <h2 class="title" id="titlePage">First title of the page</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error iste ullam, enim minus facere voluptas odit 
+        eaque atque beatae adipisci quas quos, in dolorem tempore? Nisi voluptate perspiciatis voluptates quaerat!</p>
+
+     <h2>footer of the page</h2>
+     <div>
+        <ul>
+            <li>home</li>
+            <li>about</li>
+            <li>product</li>
+        </ul>
+     </div>
+</div>
+
+<div class="second">
+    <h2 class="title" id="titlePage">Second title of the page</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error iste ullam, enim minus facere voluptas odit 
+        eaque atque beatae adipisci quas quos, in dolorem tempore? Nisi voluptate perspiciatis voluptates quaerat!</p>
+
+     <h2>footer of the page</h2>
+     <div>
+        <ul>
+            <li>home</li>
+            <li>about</li>
+            <li>product</li>
+        </ul>
+     </div>
+</div>
+    
+</body>
+<script>
+
+
+// read
+// let title = document.getElementsByTagName("h2")[1]
+//    let title = document.getElementsByClassName("title")
+// let title = document.getElementById("title")
+
+
+// let title = document.querySelector("h2")
+//    let title = document.querySelector(".title")
+   let title = document.querySelector("#titlePage") 
+   let temp =  document.querySelectorAll("h2")
+    
+// create. and update
+
+ let heading =   document.createElement("h5")
+   
+ heading.innerText = "hello this is first line of heading";
+ heading.style.border = "1px solid black"
+
+ document.body.append(heading) 
+
+//  delete elements
+//  document.body.lastChild.remove()
+
+let secondItem = document.querySelector(".second")
+secondItem.lastElementChild.firstElementChild.firstElementChild.style.borderBottom = "1px solid grey"
+secondItem.lastElementChild.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.style.borderBottom = "1px solid red";
+
+document.body.style.backgroundColor = "lightPink"
+
+
+// set attributes in js
+
+let para = document.querySelector("p")
+ para.setAttribute("class", "paragraph");
+ para.removeAttribute("class")
+
+
+
+ // event in js
+ // click, dblclick, onmouseover, onmouseout, change, submit
+
+
+ 
+</script>
+</html>
