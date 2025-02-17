@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event bubbling</title>
+</head>
+<body>
+
+    <div onclick="parent()" style="padding: 40px; display: flex; border: 2px solid black">
+  
+        <button style="padding: 20px 50px; border: 1px solid grey; cursor: pointer;">
+            child
+            <!-- <span onclick="grandChild()">try</span> -->
+        </button>
+    </div>
+    
+    <script>
+        function parent(){
+            console.log("hello i am parent")
+        }
+ 
+        let btn = document.querySelector("button")
+
+        btn.addEventListener("click", function(e){
+                e.stopPropagation()
+               console.log("hello i am child")
+        })
+
+        function grandChild(){
+            console.log("hello i am grand child")
+        }
+
+
+        // note
+    </script>
+</body>
+</html>

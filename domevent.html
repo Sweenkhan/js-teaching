@@ -15,6 +15,9 @@
         <button class="submitForm" type="submit" style="margin-top: 10px;">submit</button>
     </form>
 
+    <p class="para" style="background-color: grey; border: 1px solid black; border-radius: 10px; padding: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, deleniti hic omnis odit laborum cupiditate officia nostrum quidem eveniet iusto quia Lorem ipsum, dolor sit amet consectetur adipisicing el  , sapiente, omnis voluptates reiciendis perspiciatis lorem consequatur rerum qui molestiae voluptatum accusantium. doloribus facilis a! Quam soluta alias et. Tenetur, quas.
+        <span class="para2" style=" display: none;  background-color: black; color: #fff;   margin-top: 20px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, ut maiores fugit, tenetur illo accusamus iure nihil, illum aliquid delectus in omnis! Iste molestias quae praesentium ut, deleniti impedit placeat? </span>
+    </p>
     
     <script>
 
@@ -32,19 +35,33 @@
 
 
        submit.addEventListener("click", function(e){
-
-        e.preventDefault();
-
-        if(input.value === ""){
+           
+           if(input.value.trim() === ""){
+            e.preventDefault();
             alert("please fill this input")
-              submit.type = false
+              
         } else {
             console.log("thanks for your time.")
             input.value = ""
         }
-
         
        } )
+
+
+       // mouseover and mouseout event
+       let para = document.querySelector(".para")
+       let para2 = document.querySelector(".para2")
+
+       para.addEventListener("mouseover", function(){
+        console.log("everything is working") 
+         
+        para2.style.display = "block"
+       })
+
+       para.addEventListener("mouseout", function(){
+        console.log("everything is working") 
+             para2.style.display = "none"
+       })
         
 
     </script>
