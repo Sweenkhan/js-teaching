@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div> 
+        <input type="text">
+        <button>Add</button>
+        <ul class="todos"></ul>
+    </div>
+    </div>
+    
+
+    <script>
+        let btn = document.querySelector("button")
+        let inputVal = document.querySelector("input")
+        let todos = document.querySelector("ul")
+
+        
+        btn.addEventListener("click", ()=>{
+            let li = document.createElement("li")
+            li.innerHTML = inputVal.value
+
+            li.addEventListener("click", ()=> {
+                li.remove()
+            })
+            console.log(inputVal)
+            todos.appendChild(li)
+            
+            inputVal.value = ""
+        })
+    </script>
+</body>
+</html>

@@ -57,3 +57,28 @@ do{
     countes++
 }while(countes < 15);
 
+
+
+
+
+
+let arr = ["rahul", "ankit", "pranjul", "gaurav", "maya"];
+
+
+// for(let i = 0; i < arr.length; i++){ 
+//         console.log(arr[i]+1)
+// }
+
+
+// arr.forEach((name) => {
+//      console.log("hello", name)
+// })
+
+
+// for of
+//  for(let student of studentData){
+         
+//         for(let key in student){
+//                 console.log(key+":"+" " + student[key])
+//         }
+//  }

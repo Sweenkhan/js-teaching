@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time</title>
+</head>
+<body>
+
+    <p></p>
+   <h2></h2>
+    <script>
+
+        let h2 = document.querySelector("h2")
+ 
+      let country = "ist"
+        setInterval(()=>{
+            let time = new Date()
+        let now = time.toLocaleTimeString()
+ 
+        let p = document.querySelector("p")
+        // p.innerHTML = now + " " + country
+
+        // p.innerHTML = `${now} ${country}`
+
+        
+        },1000, country)
+
+
+      //function creatin with default parameter
+        function greet(name = "devine"){
+            // h2.innerHTML = "hello " + " " + name + "," + " " +  "how are you"
+
+            h2.innerHTML = `hello ${name}, how are you`   //template letteral
+        }
+
+        greet("ankit")
+
+ 
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,127 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+      .data {
+        border: 1px solid black;
+        padding: 5px;
+        width: 200px;
+
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+
+        <button>Random Users</button>
+         <div class="container">
+
+         </div>
+    </div>
+
+    <script> 
+
+        let btn = document.querySelector("button")
+        btn.addEventListener("click", fetchingWithBtn)
+
+
+
+    //   async function fetchingData() {
+
+    //       try { 
+      //       let result = await fetch("https://randomuser.me/api/?results=20");
+      //       let data = await result.json();
+      //       let users = data.results
+             
+    //         Clear previous data
+    //         dataDiv.innerHTML = "";
+
+    //         users.map((user)=>{
+
+    //         let div = document.createElement("div");
+    //         div.classList.add("data")
+    //       dataDiv.appendChild(div); 
+
+    //       let img = document.createElement("img")
+    //       img.setAttribute("src", user.picture.medium)
+    //       div.appendChild(img)
+
+    //       let p = document.createElement("p");
+    //       p.innerHTML =  `Name: ${user.name.first} ${user.name.last}`;
+    //       div.appendChild(p);
+
+    //       let secondP = document.createElement("p");
+    //       secondP.innerHTML = `Gender: ${user.gender}`
+    //       div.appendChild(secondP)
+    //       })
+
+    //     } catch (eroor) {
+    //       console.log(eroor);
+    //     }
+    //   }
+    
+// 1a4e51c7377e8cf939cbc51bb433a57f
+
+    function fetchingWithBtn(){
+        fetch("https://randomuser.me/api/?results=20")
+      .then((result) =>{
+         return result.json()
+      })
+      .then((data)=>{
+          //  let users = [...data.results]
+          let users = data.results
+            fetchingData(users)
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+
+    } 
+
+       
+        function fetchingData(users){ 
+            let dataDiv = document.querySelector(".container")
+
+              // Clear previous data
+              dataDiv.innerHTML = "";
+
+              setTimeout(()=>{
+
+                users.map((user)=>{
+                  
+                  let div = document.createElement("div");
+                div.classList.add("data")
+                dataDiv.appendChild(div); 
+                
+                let img = document.createElement("img")
+                img.setAttribute("src", user.picture.medium)
+                div.appendChild(img)
+                
+                let p = document.createElement("p");
+                p.innerHTML =  `Name: ${user.name.first} ${user.name.last}`;
+                div.appendChild(p);
+                
+                let secondP = document.createElement("p");
+                secondP.innerHTML = `Gender: ${user.gender}`
+                div.appendChild(secondP)
+              })
+            },500)
+        }
+          
+
+
+    </script>
+  </body>
+</html>

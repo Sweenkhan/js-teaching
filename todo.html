@@ -1,0 +1,80 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do</title>
+
+    <style>
+        .showBorder{
+             border: 1px solid grey;
+             border-radius: 5px;
+             padding: 5px;
+        }
+
+        li{
+            cursor: pointer;
+        }
+    </style>
+  </head>
+  <body>
+
+    <div class="wrapper" style="padding: 2rem;">
+
+      <h2>Write your todos.</h2>
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sapiente, necessitatibus eius ad, dignissimos dolores quas sint exercitationem iusto suscipit impedit consequuntur mollitia possimus? Voluptates dicta aspernatur doloribus autem neque!</p>
+      <div class="container">
+        <input type="text" />
+        <button>Add</button>
+      </div>
+
+      <div class="todosContainer">
+        <ul> 
+
+        </ul>
+      </div>
+    </div>
+    <script>
+
+
+        let input = document.querySelector("input")
+        let btn = document.querySelector("button")
+        let p = document.querySelector("p")
+        let ul = document.querySelector("ul")
+
+
+
+        btn.addEventListener("click", function welcome(){
+            
+            if(input.value != ""){
+                let list = document.createElement("li")     //create element
+                  list.innerText = input.value              // adding value
+                ul.appendChild(list)                        // adding in document
+
+
+             list.addEventListener("click", ()=>{          // adding event on the li tag
+                if(ul.childElementCount === 1){            // checking if list is empty then removing classlist
+             ul.classList.remove("showBorder")
+                } 
+
+                list.remove()                              // removing list from the ul 
+             })
+           
+             
+             input.value = ""                              
+             ul.classList.add("showBorder")
+ 
+              
+            }else{
+              alert("please write down something")
+            }
+             
+        })
+
+        
+ 
+
+       
+    </script>
+
+  </body>
+</html>
