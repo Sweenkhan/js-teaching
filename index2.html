@@ -1,0 +1,60 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+
+    <button onclick="fetchingApi()">Show result</button>
+    <div class="showResult">
+        <p></p>
+        <p></p>
+        <p></p>
+        <img src = "" />
+    </div>
+
+
+
+
+    <script> 
+        
+        let showResult = document.querySelector(".showResult")
+        function fetchingApi() { 
+            let city = document.querySelector("input").value.trim()
+            
+            if(city === "") {
+                alert("please fill out input.") 
+                return 
+            }
+            
+        fetch( `https://api.openweathermap.org/data/2.5/weather?q= ${city}&appid=${"6bc9b21c24b0aeb74941d2b51856e7ee"}&units=metric`)
+          .then((results) => {
+            return results.json();
+          })
+          .then((result) => { 
+            creatImage(result);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+
+
+      function creatImage(data) {
+       let image = document.querySelector("img")
+       let allP = document.querySelectorAll("p")
+
+       allP[0].innerText =  `Temperature: ${data.main.temp}`
+
+        image.setAttribute("src", `https://flagsapi.com/${data.sys.country}/shiny/64.png`); 
+        console.log("yes its working");
+
+        let input = document.querySelector("input")
+        input.value = ""
+      }
+    </script>
+  </body>
+</html>

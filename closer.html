@@ -1,0 +1,96 @@
+ 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounced Search with API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #searchResults {
+            margin-top: 20px;
+        }
+        .book {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 5px;
+            display: inline-block;
+            width: 200px;
+            text-align: left;
+        }
+        img {
+            width: 100px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Search Books</h2>
+    <input type="text" id="searchInput" placeholder="Type a book name..." />
+    <div id="searchResults"></div>
+
+    <script>
+        // Debounce function using Closure
+        function debounce(fn, delay) {
+            let timer;
+            return function (...args) {
+                clearTimeout(timer);
+                timer = setTimeout(() => fn(...args), delay);
+            };
+        }
+
+        
+        // Fetch data from Open Library API
+        async function fetchSearchResults(query) {
+            if (!query) {
+                document.getElementById("searchResults").innerHTML = "";
+                return;
+            }
+
+            try {
+                let response = await fetch(`https://openlibrary.org/search.json?q=${query}&limit=10`);
+                let data = await response.json();
+                displayResults(data.docs);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        // Display search results
+        function displayResults(books) {
+            let resultsDiv = document.getElementById("searchResults");
+            resultsDiv.innerHTML = ""; // Clear previous results
+
+            books.forEach(book => {
+                let bookDiv = document.createElement("div");
+                bookDiv.classList.add("book");
+
+                let title = document.createElement("p");
+                title.innerHTML = `<strong>${book.title}</strong>`;
+                bookDiv.appendChild(title);
+
+                let author = document.createElement("p");
+                author.innerText = `Author: ${book.author_name ? book.author_name[0] : "Unknown"}`;
+                bookDiv.appendChild(author);
+
+                let img = document.createElement("img");
+                img.src = book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : "https://via.placeholder.com/100x150";
+                bookDiv.appendChild(img);
+
+                resultsDiv.appendChild(bookDiv);
+            });
+        }
+
+        // Optimize the search input using debounce
+        const optimizedSearch = debounce(fetchSearchResults, 500);
+
+
+        // Event listener for input field
+        document.querySelector("#searchInput").addEventListener("input", (event) => {
+            optimizedSearch(event.target.value);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <div class="profile"> 
+
+        <h2></h2>
+    </div>
+
+    <button onclick="logOut()"> Log out</button>
+
+    <script>
+
+        let name = "ankit"
+        let age = 22
+
+
+        // setItem, getItem, removeItem
+        window.localStorage.setItem("userName", name)
+        window.localStorage.setItem("age", age)
+
+
+
+        document.querySelector("h2").innerText = `name: ${window.localStorage.getItem("userName")}` 
+        function logOut(){
+           window.localStorage.removeItem("userName")
+
+           window.localStorage.clear()
+
+           setTimeout(() => {
+            document.querySelector(".profile").innerHTML = ""
+            console.log("profile is logged out!")
+           }, 2000)
+        }
+
+        
+
+    </script>
+ </body>
+ </html>
