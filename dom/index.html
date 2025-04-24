@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document object model</title>
+</head>
+<body> 
+    <p>this is first line of code<br/></p>
+
+    <script>
+
+   let p =  document.createElement("p")
+   p.innerHTML = "hello i am second line"
+
+   p.setAttribute("id", "para")
+   p.setAttribute("class", "firstPara")
+
+   p.removeAttribute("class")
+
+   document.body.append(p)
+    </script>
+    
+</body>
+</html>

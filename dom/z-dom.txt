@@ -1,0 +1,144 @@
+ : Document Object Model (DOM)
+The DOM is an interface that allows JavaScript to interact with and manipulate the HTML structure of a webpage.
+
+🔹 8.1 What is the DOM?
+✅ The DOM represents the HTML page as a tree of nodes (elements, attributes, text).
+✅ It allows JavaScript to access, modify, and manipulate HTML elements dynamically.
+✅ Example of an HTML structure as a DOM tree:
+
+ 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+</head>
+<body>
+    <h1 id="title">Hello World</h1>
+    <p class="desc">This is a paragraph.</p>
+</body>
+</html>
+📌 The above HTML can be visualized as a DOM tree:
+
+
+Document
+ ├── <html>
+ │    ├── <head>
+ │    │    └── <title>My Page</title>
+ │    ├── <body>
+ │         ├── <h1 id="title">Hello World</h1>
+ │         ├── <p class="desc">This is a paragraph.</p>
+
+
+
+🔹 8.2 Selecting Elements in the DOM
+To modify the webpage, we need to select elements first. Here’s how:
+
+✅ Select by ID: 
+let heading = document.getElementById("title");
+console.log(heading.innerText); // Outputs: Hello World
+
+
+✅ Select by Class Name: 
+let para = document.getElementsByClassName("desc");
+console.log(para[0].innerText); // Outputs: This is a paragraph.
+
+
+✅ Select by Tag Name: 
+let paragraphs = document.getElementsByTagName("p");
+console.log(paragraphs[0].innerText);
+
+
+✅ Select Using Query Selector (Recommended): 
+let firstPara = document.querySelector(".desc"); // Selects first match
+let allParas = document.querySelectorAll("p"); // Selects all <p> elements
+console.log(firstPara.innerText);
+
+
+🔹 8.3 Modifying DOM Elements
+✅ Change Text Content: 
+let title = document.getElementById("title");
+title.innerText = "Welcome to JavaScript!";
+
+
+✅ Change HTML Content: 
+title.innerHTML = "<span style='color:red'>JavaScript is awesome!</span>";
+
+
+✅ Change CSS Styles: 
+title.style.color = "blue";
+title.style.fontSize = "24px";
+
+
+🔹 8.4 Adding & Removing Elements
+✅ Create a New Element: 
+let newPara = document.createElement("p");
+newPara.innerText = "This is a new paragraph.";
+document.body.appendChild(newPara);
+
+
+✅ Remove an Element:  
+let removeElement = document.querySelector(".desc");
+removeElement.remove();
+
+
+🔹 8.5 Event Handling
+✅ Handling Click Events: 
+document.getElementById("title").addEventListener("click", function() {
+    alert("Title Clicked!");
+});
+
+
+✅ Handling Input Events: 
+document.getElementById("inputBox").addEventListener("input", function(event) {
+    console.log("User typed: ", event.target.value);
+});
+
+
+✅ Handling Mouse Events: 
+document.getElementById("title").addEventListener("mouseover", function() {
+    console.log("Mouse is over the title");
+});
+
+
+🔹 8.6 Event Delegation
+📌 Instead of adding event listeners to each element, we can add it to a parent and use event delegation:
+
+ 
+document.body.addEventListener("click", function(event) {
+    if (event.target.tagName === "BUTTON") {
+        console.log("Button clicked:", event.target.innerText);
+    }
+});
+
+
+🔹 8.7 Form Handling & Validation
+✅ Getting Input Values:
+
+ 
+let inputValue = document.getElementById("username").value;
+console.log(inputValue);
+
+
+✅ Form Validation: 
+let form = document.getElementById("myForm");
+
+form.addEventListener("submit", function(event) {
+    let username = document.getElementById("username").value;
+    if (username === "") {
+        alert("Username cannot be empty!");
+        event.preventDefault(); // Stops form submission
+    }
+});
+
+
+🚀 Conclusion
+The DOM is one of the most important parts of JavaScript.
+Mastering it allows you to build dynamic and interactive websites.
+
+Key Takeaways
+✅ Select elements (getElementById, querySelector)
+✅ Modify elements (innerText, innerHTML, style)
+✅ Add/Remove elements (createElement, remove())
+✅ Handle events (addEventListener, event delegation)
+✅ Work with forms (input values, validation)
+
