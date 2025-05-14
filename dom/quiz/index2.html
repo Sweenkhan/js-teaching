@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text"/>
+
+
+    <script>
+
+      let input = document.querySelector("input")
+
+    //   input.addEventListener("input", (e)=>{
+    //        console.log(e.target.value.toUpperCase())
+    //        input.value = e.target.value.toUpperCase()
+    //   })
+
+      input.addEventListener("keyup", (e) => {
+           console.log("keyup", e.key)
+      })
+
+      input.addEventListener("keydown", (e) => {
+        console.log("keydown", e.key)
+      })
+
+
+      //use input event instead keypress 
+      input.addEventListener("keypress", (e) =>{
+        console.log("keypress", e.key)
+      })
+
+
+
+    </script>
+</body>
+</html>
